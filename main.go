@@ -180,7 +180,6 @@ func main() {
 							   f == "PATCH" {
 								labelValues[0] = f
 							}
-
 						}
 
 						if s, err := entry.Field("status"); err == nil {
