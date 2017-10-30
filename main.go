@@ -178,7 +178,7 @@ func main() {
 							   f == "OPTIONS" ||
 							   f == "TRACE" ||
 							   f == "PATCH" {
-									 labelValues[0] = f
+									labelValues[0] = f
 							}
 
 						}
