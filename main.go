@@ -164,11 +164,23 @@ func main() {
 
 						labelValues[0] = "UNKNOWN"
 						labelValues[1] = "0"
-						labelValues[2] = "default"
+						labelValues[2] = "unknown"
 
 						if request, err := entry.Field("request"); err == nil {
-							f := strings.Split(request, " ")
-							labelValues[0] = f[0]
+							split := strings.Split(request, " ")
+							f := strings.ToUpper(split[0])
+							if f == "GET" ||
+							   f == "HEAD"||
+							   f == "POST" ||
+							   f == "PUT" ||
+							   f == "DELETE" ||
+							   f == "CONNECT" ||
+							   f == "OPTIONS" ||
+							   f == "TRACE" ||
+							   f == "PATCH" {
+									 labelValues[0] = f
+							}
+
 						}
 
 						if s, err := entry.Field("status"); err == nil {
