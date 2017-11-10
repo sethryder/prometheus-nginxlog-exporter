@@ -138,10 +138,12 @@ func main() {
 			metrics.Init(&nsCfg)
 
 			for _, f := range nsCfg.SourceFiles {
+				seekInfo := tail.SeekInfo{Offset:0, Whence:os.SEEK_END}
 				t, err := tail.TailFile(f, tail.Config{
 					Follow: true,
 					ReOpen: true,
 					Poll:   true,
+					Location: &seekInfo,
 				})
 				if err != nil {
 					panic(err)
